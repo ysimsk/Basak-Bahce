@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Başak Bahçe ve Tarım Makinaları</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-50: #EAF3DE;
+      --green-100: #C0DD97;
+      --green-200: #97C459;
+      --green-600: #3B6D11;
+      --green-700: #2e5a0d;
+      --green-800: #27500A;
+      --amber-50: #FAEEDA;
+      --amber-400: #BA7517;
+      --gray-50: #F7F6F2;
+      --gray-100: #EDECE7;
+      --gray-200: #D3D1C7;
+      --gray-500: #888780;
+      --gray-700: #444441;
+      --gray-900: #1a1a18;
+      --white: #ffffff;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--gray-50);
+      color: var(--gray-900);
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-100);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #E85A00;
+      line-height: 1;
+      letter-spacing: 0.04em;
+    }
+
+    .logo-sub {
+      font-size: 10px;
+      color: #3B6D11;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .header-contact {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .header-contact a {
+      font-size: 13px;
+      color: var(--gray-500);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .header-contact a:hover { color: var(--green-600); }
+
+    .btn-primary {
+      background: var(--green-600);
+      color: var(--white);
+      border: none;
+      padding: 8px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--green-700); }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, var(--green-800) 0%, var(--green-600) 100%);
+      color: var(--white);
+      padding: 5rem 1.5rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hero-inner { position: relative; max-width: 640px; margin: 0 auto; }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 16px;
+      opacity: 0.85;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .hero-search {
+      display: flex;
+      gap: 8px;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+
+    .hero-search input {
+      flex: 1;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      border: none;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      outline: none;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-search button {
+      background: var(--amber-400);
+      color: var(--white);
+      border: none;
+      padding: 12px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.15s;
+    }
+
+    .hero-search button:hover { opacity: 0.9; }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .stats-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--gray-500);
+    }
+
+    .stat-icon { font-size: 16px; }
+    .stat strong { color: var(--gray-900); font-weight: 500; }
+
+    /* MAIN */
+    .main { max-width: 1200px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+
+    /* FILTERS */
+    .filters-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .filter-label {
+      font-size: 13px;
+      color: var(--gray-500);
+      font-weight: 500;
+      margin-right: 4px;
+    }
+
+    .tab {
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--gray-200);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      background: var(--white);
+      color: var(--gray-700);
+      transition: all 0.15s;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .tab:hover { border-color: var(--green-200); color: var(--green-600); }
+    .tab.active { background: var(--green-600); color: var(--white); border-color: var(--green-600); }
+
+    /* SECTION TITLE */
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-title { font-size: 18px; font-weight: 500; color: var(--gray-900); }
+    .result-count { font-size: 13px; color: var(--gray-500); }
+
+    /* GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+      border-color: var(--green-100);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 160px;
+      background: var(--gray-50);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      position: relative;
+    }
+
+    .card-badges {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      gap: 5px;
+    }
+
+    .badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 999px;
+      letter-spacing: 0.03em;
+    }
+
+    .badge-yeni { background: var(--green-50); color: var(--green-800); }
+    .badge-indirim { background: var(--amber-50); color: var(--amber-400); }
+
+    .card-body { padding: 16px; }
+
+    .card-cat {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--green-600);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+    .card-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--gray-900);
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--gray-500);
+      line-height: 1.5;
+      margin-bottom: 14px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--gray-100);
+      padding-top: 12px;
+      margin-top: 4px;
+    }
+
+    .card-price { font-size: 17px; font-weight: 600; color: var(--gray-900); }
+
+    .card-btn {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--gray-200);
+      background: transparent;
+      color: var(--gray-700);
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .card-btn:hover { background: var(--green-600); color: var(--white); border-color: var(--green-600); }
+
+    /* EMPTY */
+    .empty {
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--gray-500);
+    }
+
+    .empty-icon { font-size: 40px; margin-bottom: 1rem; }
+    .empty p { font-size: 15px; }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 520px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--gray-200);
+      background: var(--white);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray-500);
+      z-index: 1;
+      transition: background 0.15s;
+    }
+
+    .modal-close:hover { background: var(--gray-100); }
+
+    .modal-img {
+      width: 100%;
+      height: 180px;
+      background: var(--gray-50);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 72px;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+
+    .modal-body { padding: 1.5rem; }
+
+    .modal-cat {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--green-600);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+    .modal h2 {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--gray-900);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .modal-desc {
+      font-size: 14px;
+      color: var(--gray-500);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+
+    .specs-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--gray-500);
+      margin-bottom: 8px;
+    }
+
+    .specs-table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+
+    .specs-table tr { border-bottom: 1px solid var(--gray-100); }
+    .specs-table tr:last-child { border-bottom: none; }
+
+    .specs-table td {
+      padding: 8px 4px;
+      font-size: 13px;
+    }
+
+    .specs-table td:first-child { color: var(--gray-500); width: 45%; }
+    .specs-table td:last-child { color: var(--gray-900); font-weight: 500; }
+
+    .modal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid var(--gray-100);
+    }
+
+    .modal-price { font-size: 24px; font-weight: 600; color: var(--gray-900); }
+
+    .btn-teklif {
+      background: var(--green-600);
+      color: var(--white);
+      border: none;
+      padding: 11px 22px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: background 0.15s;
+    }
+
+    .btn-teklif:hover { background: var(--green-700); }
+
+    /* FOOTER */
+    footer {
+      background: var(--gray-900);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 13px;
+      margin-top: 4rem;
+    }
+
+    footer strong { color: var(--white); }
+
+    /* CONTACT SECTION */
+    .contact-section {
+      background: var(--green-600);
+      color: var(--white);
+      padding: 3rem 1.5rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    .contact-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-section p {
+      font-size: 15px;
+      opacity: 0.85;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    .btn-outline-white {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.5);
+      padding: 10px 22px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: background 0.15s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-outline-white:hover { background: rgba(255,255,255,0.1); }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .header-contact { display: none; }
+      .hero { padding: 3rem 1rem 2.5rem; }
+      .hero-search { flex-direction: column; }
+      .main { padding: 1.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">
+        <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="19" cy="19" r="18" fill="#f5f0e8" stroke="#e0d5c0" stroke-width="0.5"/>
+          <line x1="19" y1="33" x2="19" y2="10" stroke="#3B6D11" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="19" y1="28" x2="14" y2="24" stroke="#3B6D11" stroke-width="1.3" stroke-linecap="round"/>
+          <ellipse cx="11.5" cy="22.5" rx="3.5" ry="2" transform="rotate(-40 11.5 22.5)" fill="#E85A00"/>
+          <line x1="19" y1="23" x2="14" y2="19" stroke="#3B6D11" stroke-width="1.3" stroke-linecap="round"/>
+          <ellipse cx="11.5" cy="17.5" rx="3.5" ry="2" transform="rotate(-45 11.5 17.5)" fill="#E85A00"/>
+          <line x1="19" y1="18" x2="15" y2="14" stroke="#3B6D11" stroke-width="1.2" stroke-linecap="round"/>
+          <ellipse cx="13" cy="12.5" rx="3" ry="1.8" transform="rotate(-45 13 12.5)" fill="#E85A00"/>
+          <line x1="19" y1="28" x2="24" y2="24" stroke="#3B6D11" stroke-width="1.3" stroke-linecap="round"/>
+          <ellipse cx="26.5" cy="22.5" rx="3.5" ry="2" transform="rotate(40 26.5 22.5)" fill="#E85A00"/>
+          <line x1="19" y1="23" x2="24" y2="19" stroke="#3B6D11" stroke-width="1.3" stroke-linecap="round"/>
+          <ellipse cx="26.5" cy="17.5" rx="3.5" ry="2" transform="rotate(45 26.5 17.5)" fill="#E85A00"/>
+          <line x1="19" y1="18" x2="23" y2="14" stroke="#3B6D11" stroke-width="1.2" stroke-linecap="round"/>
+          <ellipse cx="25" cy="12.5" rx="3" ry="1.8" transform="rotate(45 25 12.5)" fill="#E85A00"/>
+          <ellipse cx="19" cy="9.5" rx="2.8" ry="1.8" fill="#E85A00"/>
+        </svg>
+      </div>
+      <div>
+        <div class="logo-text">BAŞAK</div>
+        <div class="logo-sub">Bahçe ve Tarım Makinaları</div>
+      </div>
+    </a>
+    <div class="header-contact">
+      <a href="tel:+905001234567">📞 0500 123 45 67</a>
+      <a href="mailto:info@greenfield.com.tr">info@greenfield.com.tr</a>
+      <a href="#iletisim" class="btn-primary">Teklif Al</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-badge">🇹🇷 Türkiye Genelinde Teslimat</span>
+    <h1>Başak Bahçe ve Tarım Makinaları</h1>
+    <p>Profesyonel Tarım & Bahçe Ekipmanları — Küçük bahçeden büyük tarlaya, doğru makineyi bulun.</p>
+    <div class="hero-search">
+      <input type="text" id="hero-search" placeholder="Ürün, marka veya kategori ara..." oninput="syncSearch(this.value)" />
+      <button onclick="document.getElementById('urunler').scrollIntoView({behavior:'smooth'})">Ara →</button>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat"><span class="stat-icon">📦</span><span><strong>200+</strong> ürün çeşidi</span></div>
+    <div class="stat"><span class="stat-icon">🚚</span><span><strong>Ücretsiz</strong> kargo 5.000₺ üzeri</span></div>
+    <div class="stat"><span class="stat-icon">🔧</span><span><strong>2 yıl</strong> servis garantisi</span></div>
+    <div class="stat"><span class="stat-icon">⭐</span><span><strong>4.8/5</strong> müşteri memnuniyeti</span></div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main" id="urunler">
+  <div class="filters-row">
+    <span class="filter-label">Kategori:</span>
+    <div id="tabs"></div>
+  </div>
+
+  <div class="section-header">
+    <div class="section-title">Ürünler</div>
+    <div class="result-count" id="count"></div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" style="display:none">
+    <div class="empty-icon">🔍</div>
+    <p>Aramanıza uygun ürün bulunamadı.</p>
+  </div>
+</main>
+
+<!-- CONTACT -->
+<section class="contact-section" id="iletisim">
+  <h2>Fiyat Teklifi Alın</h2>
+  <p>Ürünler hakkında bilgi almak veya sipariş vermek için bize ulaşın.</p>
+  <div class="contact-btns">
+    <a href="tel:+905001234567" class="btn-outline-white">📞 Bizi Arayın</a>
+    <a href="https://wa.me/905001234567" class="btn-outline-white">💬 WhatsApp</a>
+    <a href="mailto:info@greenfield.com.tr" class="btn-outline-white">✉️ E-posta Gönderin</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Başak Bahçe ve Tarım Makinaları</strong> &copy; 2025 — Tüm hakları saklıdır.</p>
+  <p style="margin-top:6px">Fiyatlara KDV dahildir. Stok değişikliği saklıdır.</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal"></div>
+</div>
+
+<script>
+const urunler = [
+  {
+    id: 1,
+    ad: "ProCut 48 Oturmalı Çim Biçici",
+    kategori: "Çim Biçiciler",
+    emoji: "🚜",
+    fiyat: 89900,
+    rozet: "yeni",
+    aciklama: "48\" kesim genişliğiyle geniş alanlar için ideal sıfır dönüş yarıçaplı oturmalı çim biçici.",
+    ozellikler: [["Motor", "Kohler 22 HP"], ["Kesim Genişliği", "122 cm (48\")"], ["Hız", "saatte 8 km"], ["Yakıt Tankı", "12 L"]]
+  },
+  {
+    id: 2,
+    ad: "TrimMaster 42 İtmeli Biçici",
+    kategori: "Çim Biçiciler",
+    emoji: "🌿",
+    fiyat: 18500,
+    rozet: "",
+    aciklama: "Kendi kendine ilerleyen, malçlama ve arka torba toplama özellikli benzinli çim biçici.",
+    ozellikler: [["Motor", "Honda 160cc"], ["Kesim Genişliği", "42 cm"], ["Sürüş", "Kendinden İtişli"], ["Çim Torbası", "60 L"]]
+  },
+  {
+    id: 3,
+    ad: "FieldBoss 95 Traktör",
+    kategori: "Traktörler",
+    emoji: "🚛",
+    fiyat: 1250000,
+    rozet: "",
+    aciklama: "95 HP 4WD tarım traktörü. Yükleyici uyumlu ön çerçeve ve 3 nokta askı sistemi ile donatılmış.",
+    ozellikler: [["Motor", "95 HP Dizel"], ["Çekiş", "4x4"], ["Kuyruk Mili", "540/1000 dev/dak"], ["Kaldırma Kapasitesi", "4.500 kg"]]
+  },
+  {
+    id: 4,
+    ad: "HarvestPro Combine XL",
+    kategori: "Biçerdöverler",
+    emoji: "🌾",
+    fiyat: 2750000,
+    rozet: "",
+    aciklama: "Buğday, mısır ve soya fasulyesi hasadı için tam ölçekli tahıl biçerdöveri. 200 hektara kadar.",
+    ozellikler: [["Motor", "320 HP Dizel"], ["Başlık Genişliği", "7,5 m"], ["Depo", "9.000 L"], ["GPS Navigasyon", "Evet"]]
+  },
+  {
+    id: 5,
+    ad: "SeedDrill 6 Sıralı Ekim Makinesi",
+    kategori: "Ekim Makineleri",
+    emoji: "🌱",
+    fiyat: 245000,
+    rozet: "indirim",
+    aciklama: "Tahıl ve sebzeler için hassas 6 sıralı ekim makinesi. 25–75 cm arasında ayarlanabilir sıra aralığı.",
+    ozellikler: [["Sıra Sayısı", "6"], ["Sıra Aralığı", "25–75 cm"], ["Hazne", "400 L"], ["Çalışma Eni", "3 m"]]
+  },
+  {
+    id: 6,
+    ad: "AquaJet 600 İlaçlama Makinesi",
+    kategori: "İlaçlama Makineleri",
+    emoji: "💧",
+    fiyat: 165000,
+    rozet: "",
+    aciklama: "600 litrelik tank, otomatik doz kontrol ve 15 metreye kadar bom genişliğine sahip çekili tarla ilaçlama makinesi.",
+    ozellikler: [["Tank", "600 L"], ["Bom Genişliği", "15 m"], ["Kontrol", "Otomatik Dozaj"], ["Meme Aralığı", "50 cm"]]
+  },
+  {
+    id: 7,
+    ad: "MiniTiller 65 Çapalama Makinesi",
+    kategori: "Toprak İşleme",
+    emoji: "⚙️",
+    fiyat: 38500,
+    rozet: "",
+    aciklama: "Tohum yatağı hazırlama için kuyruk milinden tahrikli çapalama makinesi. Küçük ve orta büyüklükteki parseller için.",
+    ozellikler: [["Çalışma Eni", "65 cm"], ["Derinlik", "18 cm'ye kadar"], ["Tahrik", "Kuyruk Mili"], ["Ağırlık", "78 kg"]]
+  },
+  {
+    id: 8,
+    ad: "SilentCut Robot Çim Biçici",
+    kategori: "Çim Biçiciler",
+    emoji: "🤖",
+    fiyat: 58900,
+    rozet: "yeni",
+    aciklama: "2 hektara kadar alanlarda kullanılabilen otonom robot çim biçici. WiFi uygulama kontrolü, yağmur sensörü.",
+    ozellikler: [["Alan", "2 hektara kadar"], ["Batarya", "10 Ah Li-İyon"], ["Kontrol", "Uygulama / GPS"], ["Gürültü", "58 dB"]]
+  },
+  {
+    id: 9,
+    ad: "ChopMaster 200 Bahçe Parçalayıcı",
+    kategori: "Bahçe Ekipmanları",
+    emoji: "🪵",
+    fiyat: 26500,
+    rozet: "",
+    aciklama: "45 mm'ye kadar dallar için elektrikli tambur parçalayıcı. Sessiz, egzozsuz, kolay depolama.",
+    ozellikler: [["Motor", "2800 W"], ["Dal Çapı", "45 mm"], ["Hız", "4000 dev/dak"], ["Ağırlık", "32 kg"]]
+  }
+];
+
+const kategoriler = ["Tümü", ...new Set(urunler.map(u => u.kategori))];
+let aktifKategori = "Tümü";
+
+const tabsEl = document.getElementById("tabs");
+kategoriler.forEach(kat => {
+  const btn = document.createElement("button");
+  btn.className = "tab" + (kat === "Tümü" ? " active" : "");
+  btn.textContent = kat;
+  btn.onclick = () => {
+    aktifKategori = kat;
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+    btn.classList.add("active");
+    render();
+  };
+  tabsEl.appendChild(btn);
+});
+
+function formatFiyat(f) {
+  return "₺" + f.toLocaleString("tr-TR");
+}
+
+function getQuery() {
+  return (document.getElementById("hero-search") || {value:""}).value.toLowerCase();
+}
+
+function syncSearch(val) {
+  render();
+}
+
+function render() {
+  const q = getQuery();
+  const filtered = urunler.filter(u => {
+    const matchKat = aktifKategori === "Tümü" || u.kategori === aktifKategori;
+    const matchQ = !q || u.ad.toLowerCase().includes(q) || u.kategori.toLowerCase().includes(q) || u.aciklama.toLowerCase().includes(q);
+    return matchKat && matchQ;
+  });
+
+  const grid = document.getElementById("grid");
+  const empty = document.getElementById("empty");
+  const count = document.getElementById("count");
+
+  count.textContent = filtered.length + " ürün listelendi";
+
+  if (!filtered.length) {
+    grid.innerHTML = "";
+    empty.style.display = "block";
+    return;
+  }
+  empty.style.display = "none";
+
+  grid.innerHTML = filtered.map(u => `
+    <div class="card" onclick="modalAc(${u.id})">
+      <div class="card-img">
+        ${u.emoji}
+        <div class="card-badges">
+          ${u.rozet === "yeni" ? '<span class="badge badge-yeni">YENİ</span>' : ""}
+          ${u.rozet === "indirim" ? '<span class="badge badge-indirim">İNDİRİM</span>' : ""}
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-cat">${u.kategori}</div>
+        <div class="card-name">${u.ad}</div>
+        <div class="card-desc">${u.aciklama}</div>
+        <div class="card-footer">
+          <span class="card-price">${formatFiyat(u.fiyat)}</span>
+          <button class="card-btn">İncele →</button>
+        </div>
+      </div>
+    </div>
+  `).join("");
+}
+
+function modalAc(id) {
+  const u = urunler.find(x => x.id === id);
+  const modal = document.getElementById("modal");
+  modal.innerHTML = `
+    <button class="modal-close" onclick="document.getElementById('modal-overlay').classList.remove('open')">✕</button>
+    <div class="modal-img">${u.emoji}</div>
+    <div class="modal-body">
+      <div class="modal-cat">${u.kategori}</div>
+      <h2>${u.ad}</h2>
+      <p class="modal-desc">${u.aciklama}</p>
+      <div class="specs-title">Teknik Özellikler</div>
+      <table class="specs-table">
+        ${u.ozellikler.map(([k,v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join("")}
+      </table>
+      <div class="modal-footer">
+        <div class="modal-price">${formatFiyat(u.fiyat)}</div>
+        <button class="btn-teklif" onclick="window.location.href='https://wa.me/905001234567?text=${encodeURIComponent("Merhaba, " + u.ad + " ürünü hakkında bilgi almak istiyorum.")}'">💬 Teklif Al</button>
+      </div>
+    </div>
+  `;
+  document.getElementById("modal-overlay").classList.add("open");
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById("modal-overlay")) {
+    document.getElementById("modal-overlay").classList.remove("open");
+  }
+}
+
+render();
+</script>
+</body>
+</html>
