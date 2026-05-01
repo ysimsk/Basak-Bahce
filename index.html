@@ -158,13 +158,14 @@
       font-family: 'DM Serif Display', serif;
       font-size: clamp(2rem, 5vw, 3rem);
       line-height: 1.15;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
 
-    .hero p {
-      font-size: 16px;
-      opacity: 0.85;
-      line-height: 1.6;
+    .hero-slogan {
+      font-size: 18px;
+      font-weight: 500;
+      color: #ffd199;
+      letter-spacing: 0.03em;
       margin-bottom: 2rem;
     }
 
@@ -609,8 +610,8 @@
         </svg>
       </div>
       <div>
-        <div class="logo-text">BAŞAK</div>
-        <div class="logo-sub">Bahçe ve Tarım Makinaları</div>
+        <div class="logo-text">BAŞAK BAHÇE</div>
+        <div class="logo-sub">Gücün ve Verimin Adresi</div>
       </div>
     </a>
     <div class="header-contact">
@@ -625,7 +626,7 @@
 <section class="hero">
   <div class="hero-inner">
     <h1>Başak Bahçe ve Tarım Makinaları</h1>
-    <p>Profesyonel Tarım & Bahçe Ekipmanları — Küçük bahçeden büyük tarlaya, doğru makineyi bulun.</p>
+    <p class="hero-slogan">Gücün ve Verimin Adresi</p>
     <div class="hero-search">
       <input type="text" id="hero-search" placeholder="Ürün, marka veya kategori ara..." oninput="syncSearch(this.value)" />
       <button onclick="document.getElementById('urunler').scrollIntoView({behavior:'smooth'})">Ara →</button>
